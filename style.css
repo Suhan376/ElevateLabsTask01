@@ -1,105 +1,264 @@
-:root {
-  --clr-primary: #90ee90;
-  --clr-secondary: #36454f;
-  
-  
-  --size-100: 0.25rem;
-  --size-200: 0.5rem;
-  --size-300: 0.75rem;
-  --size-400: 1rem;
-  --size-500: 1.5rem;
-  --size-600: 2rem;
-  --size-700: 3rem;
-  --size-800: 4rem;
-  --size-900: 5rem;
-
-  --fs-300: 0.8125rem; /* ~13px */
-  --fs-400: 0.875rem; /* 14px */
-  --fs-500: 0.9375rem; /* 15px */
-  --fs-600: 1rem; /* 16px (base size) */
-  --fs-700: 1.875rem; /* 30px - subheading/hero text */
-  --fs-800: 2.5rem; /* 40px - section titles */
-  --fs-900: 3.5rem; /* 56px - main hero heading */
-}
-
-/* 1. Use a more-intuitive box-sizing model */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* 2. Remove default margin */
+/* ===== RESET ===== */
 * {
   margin: 0;
-}
-
-/* 3. Enable keyword animations */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    interpolate-size: allow-keywords;
-  }
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  /* 4. Add accessible line-height */
-  line-height: 1.5;
-  /* 5. Improve text rendering */
-  -webkit-font-smoothing: antialiased;
+  background-color: #f7f9fb;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* 6. Improve media defaults */
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-/* 7. Inherit fonts for form controls */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-/* 8. Avoid text overflows */
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
-
-/* 9. Improve line wrapping */
-p {
-  text-wrap: pretty;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-wrap: balance;
-}
-
-/*
-  10. Create a root stacking context
-*/
-#root,
-#__next {
-  isolation: isolate;
-}
-
+/* ===== HEADER ===== */
 .header {
   display: flex;
-  justify-content: space-evenly;
-  background-color: var(--clr-primary);
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 70px;
+  background: linear-gradient(90deg, #001f3f, #003366);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header h1 {
+  font-size: 1.9rem;
+  letter-spacing: 1px;
+  color: #00c8ff;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: #00c8ff;
+  transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: #00c8ff;
+}
+
+/* ===== HERO ===== */
+.Hero {
+  text-align: center;
+  padding: 110px 20px;
+  background: linear-gradient(135deg, #00c8ff 0%, #0066ff 100%);
+  color: #fff;
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.Hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.08),
+    transparent 70%
+  );
+  animation: rotateBg 30s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotateBg {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Hero h1 {
+  max-width: 800px;
+  margin: 0 auto 25px;
+  font-size: 2rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
+}
+
+.Hero p {
+  max-width: 850px;
+  margin: 0 auto 40px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #f0f8ff;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== CTA BUTTONS ===== */
+.Hero button {
+  border: none;
+  padding: 15px 40px;
+  margin: 10px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.Hero button:first-of-type {
+  background: #fff;
+  color: #0066ff;
+  box-shadow: 0 0 15px rgba(229, 46, 113, 0.5);
+}
+
+.Hero button:first-of-type:hover {
+  transform: translateY(-4px);
+  background: #0066ff;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(229, 46, 113, 0.8);
+}
+
+.Hero button:last-of-type {
+  background: #fff;
+  color: #0066ff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.Hero button:last-of-type:hover {
+  transform: translateY(-4px);
+  background: #0066ff;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(0, 102, 255, 0.8);
+}
+
+.Hero p:nth-of-type(2) {
+  font-weight: 700;
+  margin-top: 15px;
+  z-index: 2;
+  position: relative;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #0d0d0d;
+  color: #fff;
+  padding: 60px 80px 30px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-left .footer-logo {
+  font-size: 1.8rem;
+  color: #00c8ff;
+  margin-bottom: 10px;
+}
+
+.footer-desc {
+  max-width: 280px;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+.footer-socialLinks a {
+  margin-right: 14px;
+}
+
+.footer-socialLinks img {
+  width: 25px;
+  height: 25px;
+  filter: invert(1);
+  transition: transform 0.3s ease;
+}
+
+.footer-socialLinks img:hover {
+  transform: scale(1.25);
+}
+
+.footer-right h4 {
+  margin-bottom: 15px;
+  color: #00c8ff;
+  font-size: 1.1rem;
+}
+
+.footer-right ul {
+  list-style: none;
+}
+
+.footer-right li {
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer-right li:hover {
+  color: #00c8ff;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 45px;
+  border-top: 1px solid #333;
+  padding-top: 15px;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .Hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .Hero p {
+    font-size: 0.95rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
 }
