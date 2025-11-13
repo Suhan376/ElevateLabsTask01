@@ -1,7 +1,7 @@
 # 🌐 Dreamit IT Solutions — Responsive Landing Page
 
 ## 📘 Overview
-This project is a **responsive landing page** created as part of my internship at **Dreamit IT Solutions**.  
+This project is a **responsive landing page** created as part of my internship 
 The goal was to design a clean, professional, and user-friendly webpage using **only HTML and CSS** — without any frameworks — to strengthen my fundamentals in responsive web design.
 
 ---
